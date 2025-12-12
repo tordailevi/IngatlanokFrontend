@@ -25,6 +25,23 @@ export function IngatlanokProvider({ children }) {
         getIngatlanok()
     }, [])
 
+
+    function deleteIngatlan(adat) {
+        console.log(adat)
+        axios.delete('https://fakestoreapi.com/ingatlanok' + "/" + adat.id)
+            .then(function (response) {
+                console.log(response);
+
+                setIngatlanLista(prevLista => prevLista.filter(ingatlan => ingatlan.id !== adat.id));
+
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+
+
+    }
+
     return <IngatlanContext.Provider value={{ IngatlanLista }}>
         {children}
     </IngatlanContext.Provider>
