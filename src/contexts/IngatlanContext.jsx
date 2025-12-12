@@ -9,15 +9,23 @@ export function IngatlanokProvider({ children }) {
 
     function getIngatlanok() {
         axios
-        .get("http://127.0.0.1:8000/api/ingatlanok")
-        .then((response) => {
-            setIngatlanLista(response.data);
-        })
-        .catch((error) => {
-            console.log(error)
-        })
-        .finally(() => {
-            setLoading(false)
-        });
+            .get("http://127.0.0.1:8000/api/ingatlanok")
+            .then((response) => {
+                setIngatlanLista(response.data);
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+            .finally(() => {
+                setLoading(false)
+            });
     }
+
+    useEffect(() => {
+        getIngatlanok()
+    }, [])
+
+    return <IngatlanContext.Provider value={{ IngatlanLista }}>
+        {children}
+    </IngatlanContext.Provider>
 }
