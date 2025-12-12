@@ -42,7 +42,7 @@ export function IngatlanokProvider({ children }) {
 
     }
 
-    return <IngatlanContext.Provider value={{ IngatlanLista }}>
+    return <IngatlanContext.Provider value={{ IngatlanLista, deleteIngatlan, getIngatlanok }}>
         {children}
     </IngatlanContext.Provider>
 }
